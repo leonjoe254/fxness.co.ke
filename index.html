@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Fxness online trading platform">
+    <meta name="theme-color" content="#0866ff">
+
+    <title>Fxness - Trading Platform</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+    <section id="loginPage" class="page active">
+
+        <div class="auth-container">
+
+            <div class="logo">
+                <span>F</span>
+                Fxness
+            </div>
+
+            <div class="auth-card">
+
+                <h1>Welcome back</h1>
+                <p class="subtitle">
+                    Sign in to your Fxness trading account.
+                </p>
+
+                <form id="loginForm">
+
+                    <label for="loginEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="loginEmail"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Sign in
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Don't have an account?
+                    <button id="showRegister">
+                        Create account
+                    </button>
+                </p>
+
+                <div id="loginMessage" class="message"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REGISTER
+    ========================== -->
+    <section id="registerPage" class="page">
+
+        <div class="auth-container">
+
+            <div class="logo">
+                <span>F</span>
+                Fxness
+            </div>
+
+            <div class="auth-card">
+
+                <h1>Create account</h1>
+
+                <p class="subtitle">
+                    Open your Fxness trading account.
+                </p>
+
+                <form id="registerForm">
+
+                    <label for="registerName">
+                        Full name
+                    </label>
+
+                    <input
+                        id="registerName"
+                        type="text"
+                        autocomplete="name"
+                        placeholder="Full name"
+                        required
+                    >
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="registerEmail"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                    <label for="registerPhone">
+                        Phone number
+                    </label>
+
+                    <input
+                        id="registerPhone"
+                        type="tel"
+                        autocomplete="tel"
+                        placeholder="07XXXXXXXX"
+                        required
+                    >
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        id="registerPassword"
+                        type="password"
+                        autocomplete="new-password"
+                        placeholder="Create password"
+                        required
+                    >
+
+                    <label for="registerConfirm">
+                        Confirm password
+                    </label>
+
+                    <input
+                        id="registerConfirm"
+                        type="password"
+                        autocomplete="new-password"
+                        placeholder="Confirm password"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Create account
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <button id="showLogin">
+                        Sign in
+                    </button>
+                </p>
+
+                <div id="registerMessage" class="message"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN APPLICATION
+    ========================== -->
+    <section id="dashboardPage" class="page">
+
+        <header class="topbar">
+
+            <div class="logo small-logo">
+                <span>F</span>
+                Fxness
+            </div>
+
+            <button
+                id="profileButton"
+                class="profile-button"
+            >
+                <span id="profileInitial">T</span>
+            </button>
+
+        </header>
+
+
+        <!-- HOME -->
+        <main id="homeScreen" class="screen active">
+
+            <div class="content">
+
+                <p class="welcome">
+                    Welcome back,
+                    <strong id="userName">Trader</strong>
+                </p>
+
+                <h2>Account overview</h2>
+
+
+                <div class="notice">
+                    Your account information and balances are retrieved
+                    directly from the Fxness trading server.
+                </div>
+
+
+                <!-- ACCOUNT BALANCE -->
+
+                <div class="balance-card">
+
+                    <div class="balance-label">
+                        ACCOUNT BALANCE
+                    </div>
+
+                    <div
+                        id="accountBalance"
+                        class="balance-value"
+                    >
+                        --
+                    </div>
+
+                    <div class="balance-actions">
+
+                        <button
+                            id="depositButton"
+                        >
+                            Deposit
+                        </button>
+
+                        <button
+                            id="withdrawButton"
+                        >
+                            Withdraw
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EQUITY -->
+
+                <div class="card">
+
+                    <div class="section-heading">
+
+                        <h3>Portfolio equity</h3>
+
+                        <span id="equityChange">
+                            --
+                        </span>
+
+                    </div>
+
+                    <div class="chart-small">
+
+                        <svg
+                            viewBox="0 0 360 100"
+                            preserveAspectRatio="none"
+                        >
+
+                            <polyline
+                                id="equityLine"
+                                points=""
+                                fill="none"
+                                stroke="#0866ff"
+                                stroke-width="3"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <small>
+                        Account equity
+                    </small>
+
+                </div>
+
+
+                <!-- MARKETS -->
+
+                <div class="section-heading">
+
+                    <h3>Markets</h3>
+
+                    <button
+                        class="link-button"
+                        data-screen="marketsScreen"
+                    >
+                        View all
+                    </button>
+
+                </div>
+
+                <div
+                    id="marketPreview"
+                    class="list"
+                >
+
+                    <div class="loading">
+                        Loading markets...
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT TRADES -->
+
+                <div class="section-heading">
+
+                    <h3>Recent trades</h3>
+
+                    <button
+                        class="link-button"
+                        data-screen="tradesScreen"
+                    >
+                        View all
+                    </button>
+
+                </div>
+
+                <div
+                    id="recentTrades"
+                    class="list"
+                >
+
+                    <div class="loading">
+                        Loading trades...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- MARKETS -->
+        <main id="marketsScreen" class="screen">
+
+            <div class="content">
+
+                <h2>Markets</h2>
+
+                <p class="subtitle">
+                    Live market instruments.
+                </p>
+
+                <div
+                    id="marketsList"
+                    class="list"
+                >
+                    Loading markets...
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- TRADING -->
+        <main id="tradeScreen" class="screen">
+
+            <div class="content">
+
+                <button
+                    id="backMarkets"
+                    class="back-button"
+                >
+                    ← Markets
+                </button>
+
+                <div class="trade-header">
+
+                    <div>
+
+                        <h2 id="tradeSymbol">
+                            EUR/USD
+                        </h2>
+
+                        <span id="tradeCategory">
+                            Forex
+                        </span>
+
+                    </div>
+
+                    <div class="trade-price">
+
+                        <strong id="tradePrice">
+                            --
+                        </strong>
+
+                        <span id="tradeChange">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHART -->
+
+                <div class="trading-chart">
+
+                    <svg
+                        id="tradingChart"
+                        viewBox="0 0 600 300"
+                        preserveAspectRatio="none"
+                    >
+
+                        <g
+                            stroke="#dce7f5"
+                            stroke-width="1"
+                        >
+
+                            <line x1="0" y1="50" x2="600" y2="50"/>
+                            <line x1="0" y1="100" x2="600" y2="100"/>
+                            <line x1="0" y1="150" x2="600" y2="150"/>
+                            <line x1="0" y1="200" x2="600" y2="200"/>
+                            <line x1="0" y1="250" x2="600" y2="250"/>
+
+                        </g>
+
+                        <polyline
+                            id="priceLine"
+                            points=""
+                            fill="none"
+                            stroke="#0866ff"
+                            stroke-width="4"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <!-- ORDER -->
+
+                <div class="order-card">
+
+                    <h3>Place order</h3>
+
+                    <label for="orderAmount">
+                        Amount
+                    </label>
+
+                    <input
+                        id="orderAmount"
+                        type="number"
+                        min="1"
+                        step="0.01"
+                        placeholder="Enter amount"
+                    >
+
+                    <div class="quick-amounts">
+
+                        <button data-amount="10">10</button>
+                        <button data-amount="50">50</button>
+                        <button data-amount="100">100</button>
+                        <button data-amount="500">500</button>
+
+                    </div>
+
+
+                    <div class="order-buttons">
+
+                        <button
+                            id="buyButton"
+                            class="buy-button"
+                        >
+                            BUY
+                        </button>
+
+                        <button
+                            id="sellButton"
+                            class="sell-button"
+                        >
+                            SELL
+                        </button>
+
+                    </div>
+
+                    <p class="risk-warning">
+                        Orders are sent to the connected trading server.
+                        Trading involves risk.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- DEPOSIT -->
+        <main id="depositScreen" class="screen">
+
+            <div class="content">
+
+                <h2>Deposit funds</h2>
+
+                <p class="subtitle">
+                    Fund your trading account.
+                </p>
+
+                <div class="card">
+
+                    <form id="depositForm">
+
+                        <label for="depositPhone">
+                            M-Pesa phone number
+                        </label>
+
+                        <input
+                            id="depositPhone"
+                            type="tel"
+                            placeholder="07XXXXXXXX"
+                            required
+                        >
+
+                        <label for="depositAmount">
+                            Amount (KES)
+                        </label>
+
+                        <input
+                            id="depositAmount"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Amount"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Continue with M-Pesa
+                        </button>
+
+                    </form>
+
+                    <div
+                        id="depositMessage"
+                        class="message"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- WALLET -->
+        <main id="walletScreen" class="screen">
+
+            <div class="content">
+
+                <h2>Wallet</h2>
+
+                <p class="subtitle">
+                    Account funds and transactions.
+                </p>
+
+                <div class="balance-card">
+
+                    <div class="balance-label">
+                        AVAILABLE BALANCE
+                    </div>
+
+                    <div
+                        id="walletBalance"
+                        class="balance-value"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+                <div
+                    id="transactionsList"
+                    class="list"
+                >
+                    Loading transactions...
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- TRADES -->
+        <main id="tradesScreen" class="screen">
+
+            <div class="content">
+
+                <h2>Trade history</h2>
+
+                <p class="subtitle">
+                    Your executed orders.
+                </p>
+
+                <div
+                    id="tradesList"
+                    class="list"
+                >
+                    Loading trades...
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- PROFILE -->
+        <main id="profileScreen" class="screen">
+
+            <div class="content">
+
+                <h2>Profile</h2>
+
+                <div class="profile-card">
+
+                    <div
+                        id="largeInitial"
+                        class="avatar"
+                    >
+                        T
+                    </div>
+
+                    <div>
+
+                        <strong id="profileName">
+                            Trader
+                        </strong>
+
+                        <span id="profileEmail">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Personal information</h3>
+
+                    <form id="profileForm">
+
+                        <label>
+                            Full name
+                        </label>
+
+                        <input
+                            id="profileFullName"
+                            type="text"
+                        >
+
+                        <label>
+                            Phone
+                        </label>
+
+                        <input
+                            id="profilePhone"
+                            type="tel"
+                        >
+
+                        <button
+                            class="primary-button"
+                            type="submit"
+                        >
+                            Save changes
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </main>
+
+
+        <!-- BOTTOM NAVIGATION -->
+
+        <nav class="bottom-navigation">
+
+            <button
+                class="nav-item active"
+                data-screen="homeScreen"
+            >
+                <span>⌂</span>
+                Home
+            </button>
+
+            <button
+                class="nav-item"
+                data-screen="marketsScreen"
+            >
+                <span>▥</span>
+                Markets
+            </button>
+
+            <button
+                class="nav-item"
+                data-screen="depositScreen"
+            >
+                <span>＋</span>
+                Deposit
+            </button>
+
+            <button
+                class="nav-item"
+                data-screen="walletScreen"
+            >
+                <span>▣</span>
+                Wallet
+            </button>
+
+            <button
+                class="nav-item"
+                data-screen="profileScreen"
+            >
+                <span>●</span>
+                Profile
+            </button>
+
+        </nav>
+
+    </section>
+
+</div>
+
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

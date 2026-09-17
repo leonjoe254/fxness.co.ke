@@ -1,0 +1,1498 @@
+:root {
+
+    --blue: #0866ff;
+    --blue-dark: #0554d6;
+    --blue-light: #eaf3ff;
+
+    --white: #ffffff;
+
+    --background: #f5f8fc;
+
+    --text: #10233f;
+    --muted: #718096;
+
+    --border: #e1e9f3;
+
+    --green: #10a66a;
+    --red: #e5484d;
+
+    --shadow:
+        0 8px 30px rgba(
+            16,
+            35,
+            63,
+            0.08
+        );
+
+    --radius: 16px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    min-height: 100%;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+
+button,
+input {
+
+    font: inherit;
+}
+
+
+button {
+
+    cursor: pointer;
+
+    border: none;
+}
+
+
+button:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+input {
+
+    width: 100%;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding:
+        13px 14px;
+
+    outline: none;
+
+    background:
+        var(--white);
+
+    color:
+        var(--text);
+}
+
+
+input:focus {
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            8,
+            102,
+            255,
+            .10
+        );
+}
+
+
+/* =================================
+   PAGE
+================================= */
+
+.page {
+
+    display: none;
+
+    min-height: 100vh;
+
+    width: 100%;
+}
+
+
+.page.active {
+
+    display: block;
+}
+
+
+/* =================================
+   AUTH
+================================= */
+
+.auth-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color:
+        var(--blue);
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+
+.logo span {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 10px;
+
+    background:
+        var(--blue);
+
+    color:
+        white;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 17px;
+}
+
+
+.small-logo {
+
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+.small-logo span {
+
+    width: 29px;
+
+    height: 29px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+
+.auth-card {
+
+    width: 100%;
+
+    max-width: 410px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding: 25px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.auth-card h1 {
+
+    margin:
+        0 0 8px;
+
+    font-size: 27px;
+}
+
+
+.subtitle {
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+
+    margin:
+        0 0 20px;
+}
+
+
+.auth-card label,
+.card label,
+.order-card label {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    margin:
+        0 0 6px;
+}
+
+
+.auth-card input {
+
+    margin-bottom: 15px;
+}
+
+
+.primary-button {
+
+    width: 100%;
+
+    background:
+        var(--blue);
+
+    color:
+        white;
+
+    padding:
+        13px 16px;
+
+    border-radius:
+        10px;
+
+    font-weight: 800;
+
+    transition:
+        background .2s;
+}
+
+
+.primary-button:hover {
+
+    background:
+        var(--blue-dark);
+}
+
+
+.auth-switch {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color:
+        var(--muted);
+
+    margin:
+        18px 0 0;
+}
+
+
+.auth-switch button {
+
+    background: none;
+
+    color:
+        var(--blue);
+
+    font-weight: 800;
+}
+
+
+.message {
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color:
+        var(--red);
+}
+
+
+/* =================================
+   TOP BAR
+================================= */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+    height: 62px;
+
+    background:
+        var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 18px;
+}
+
+
+.profile-button {
+
+    width: 37px;
+
+    height: 37px;
+
+    border-radius: 50%;
+
+    background:
+        var(--blue-light);
+
+    color:
+        var(--blue);
+
+    font-weight: 900;
+}
+
+
+/* =================================
+   CONTENT
+================================= */
+
+.content {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    margin:
+        0 auto;
+
+    padding:
+        20px;
+
+    padding-bottom:
+        100px;
+}
+
+
+h2 {
+
+    margin:
+        0 0 6px;
+
+    font-size: 21px;
+}
+
+
+h3 {
+
+    margin:
+        0;
+
+    font-size: 14px;
+}
+
+
+.welcome {
+
+    color:
+        var(--muted);
+
+    font-size: 11px;
+
+    margin:
+        0 0 5px;
+}
+
+
+.notice {
+
+    background:
+        var(--blue-light);
+
+    color:
+        #49627e;
+
+    border-radius:
+        12px;
+
+    padding:
+        12px;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+    margin:
+        15px 0;
+}
+
+
+/* =================================
+   CARDS
+================================= */
+
+.card {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:
+        16px;
+
+    box-shadow:
+        var(--shadow);
+
+    margin-bottom:
+        15px;
+}
+
+
+/* =================================
+   BALANCE
+================================= */
+
+.balance-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0866ff,
+            #4e98ff
+        );
+
+    color:
+        white;
+
+    border-radius:
+        18px;
+
+    padding:
+        19px;
+
+    margin:
+        15px 0;
+}
+
+
+.balance-label {
+
+    font-size:
+        10px;
+
+    opacity:
+        .85;
+
+    font-weight:
+        800;
+}
+
+
+.balance-value {
+
+    font-size:
+        28px;
+
+    font-weight:
+        900;
+
+    margin:
+        7px 0 16px;
+}
+
+
+.balance-actions {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+}
+
+
+.balance-actions button {
+
+    flex:
+        1;
+
+    padding:
+        10px;
+
+    border-radius:
+        9px;
+
+    background:
+        white;
+
+    color:
+        var(--blue);
+
+    font-weight:
+        800;
+
+    font-size:
+        11px;
+}
+
+
+/* =================================
+   SECTIONS
+================================= */
+
+.section-heading {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin:
+        20px 0 10px;
+}
+
+
+.section-heading span {
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+}
+
+
+.link-button {
+
+    background:
+        none;
+
+    color:
+        var(--blue);
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+}
+
+
+/* =================================
+   LISTS
+================================= */
+
+.list {
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        14px;
+
+    overflow:
+        hidden;
+}
+
+
+.market-row,
+.trade-row,
+.transaction-row {
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        13px 14px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    background:
+        white;
+
+    text-align:
+        left;
+}
+
+
+.market-row:last-child,
+.trade-row:last-child,
+.transaction-row:last-child {
+
+    border-bottom:
+        none;
+}
+
+
+.market-row:hover {
+
+    background:
+        #f8fbff;
+}
+
+
+.asset {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+
+.coin {
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    border-radius:
+        10px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    background:
+        var(--blue-light);
+
+    color:
+        var(--blue);
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+}
+
+
+.asset strong,
+.trade-row strong,
+.transaction-row strong {
+
+    display:
+        block;
+
+    font-size:
+        12px;
+}
+
+
+.asset span,
+.trade-row span,
+.transaction-row span {
+
+    display:
+        block;
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    margin-top:
+        3px;
+}
+
+
+.market-price,
+.trade-result {
+
+    text-align:
+        right;
+}
+
+
+.market-price strong {
+
+    display:
+        block;
+
+    font-size:
+        12px;
+}
+
+
+.market-price span,
+.trade-result span {
+
+    font-size:
+        9px;
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+}
+
+
+.positive {
+
+    color:
+        var(--green);
+}
+
+
+.negative {
+
+    color:
+        var(--red);
+}
+
+
+.empty,
+.loading {
+
+    padding:
+        25px 15px;
+
+    text-align:
+        center;
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+}
+
+
+/* =================================
+   CHART
+================================= */
+
+.chart-small {
+
+    height:
+        100px;
+
+    margin:
+        10px 0;
+}
+
+
+.chart-small svg {
+
+    width:
+        100%;
+
+    height:
+        100%;
+}
+
+
+.card small {
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+}
+
+
+/* =================================
+   TRADING
+================================= */
+
+.back-button {
+
+    background:
+        none;
+
+    color:
+        var(--blue);
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        15px;
+}
+
+
+.trade-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        15px;
+}
+
+
+.trade-header h2 {
+
+    margin:
+        0;
+}
+
+
+.trade-header span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+}
+
+
+.trade-price {
+
+    text-align:
+        right;
+}
+
+
+.trade-price strong {
+
+    display:
+        block;
+
+    font-size:
+        17px;
+}
+
+
+.trade-price span {
+
+    color:
+        var(--green);
+
+    font-size:
+        10px;
+}
+
+
+.trading-chart {
+
+    height:
+        300px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        15px;
+
+    padding:
+        10px;
+
+    overflow:
+        hidden;
+
+    margin-bottom:
+        15px;
+}
+
+
+.trading-chart svg {
+
+    width:
+        100%;
+
+    height:
+        100%;
+}
+
+
+.order-card {
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        15px;
+
+    padding:
+        16px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.order-card h3 {
+
+    margin-bottom:
+        15px;
+}
+
+
+.order-card input {
+
+    margin-bottom:
+        10px;
+}
+
+
+.quick-amounts {
+
+    display:
+        flex;
+
+    gap:
+        7px;
+
+    margin:
+        5px 0 15px;
+}
+
+
+.quick-amounts button {
+
+    flex:
+        1;
+
+    background:
+        var(--blue-light);
+
+    color:
+        var(--blue);
+
+    border-radius:
+        8px;
+
+    padding:
+        9px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+}
+
+
+.order-buttons {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+}
+
+
+.buy-button,
+.sell-button {
+
+    flex:
+        1;
+
+    padding:
+        13px;
+
+    border-radius:
+        10px;
+
+    color:
+        white;
+
+    font-weight:
+        900;
+}
+
+
+.buy-button {
+
+    background:
+        var(--green);
+}
+
+
+.sell-button {
+
+    background:
+        var(--red);
+}
+
+
+.risk-warning {
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    line-height:
+        1.5;
+
+    margin:
+        12px 0 0;
+}
+
+
+/* =================================
+   PROFILE
+================================= */
+
+.profile-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        15px;
+
+    padding:
+        16px;
+
+    margin:
+        15px 0;
+}
+
+
+.avatar {
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    border-radius:
+        50%;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    background:
+        var(--blue);
+
+    color:
+        white;
+
+    font-size:
+        20px;
+
+    font-weight:
+        900;
+}
+
+
+.profile-card strong {
+
+    display:
+        block;
+
+    font-size:
+        14px;
+}
+
+
+.profile-card span {
+
+    display:
+        block;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    margin-top:
+        4px;
+}
+
+
+.card h3 {
+
+    margin-bottom:
+        15px;
+}
+
+
+.card input {
+
+    margin-bottom:
+        13px;
+}
+
+
+.logout-button {
+
+    width:
+        100%;
+
+    padding:
+        13px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--red);
+
+    color:
+        var(--red);
+
+    border-radius:
+        10px;
+
+    font-weight:
+        800;
+}
+
+
+/* =================================
+   BOTTOM NAV
+================================= */
+
+.bottom-navigation {
+
+    position:
+        fixed;
+
+    bottom:
+        0;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        70px;
+
+    background:
+        white;
+
+    border-top:
+        1px solid var(--border);
+
+    display:
+        flex;
+
+    z-index:
+        100;
+
+    margin:
+        auto;
+
+    max-width:
+        650px;
+}
+
+
+.nav-item {
+
+    flex:
+        1;
+
+    background:
+        transparent;
+
+    color:
+        #8190a5;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+}
+
+
+.nav-item span {
+
+    font-size:
+        18px;
+}
+
+
+.nav-item.active {
+
+    color:
+        var(--blue);
+}
+
+
+/* =================================
+   TOAST
+================================= */
+
+.toast {
+
+    position:
+        fixed;
+
+    bottom:
+        85px;
+
+    left:
+        50%;
+
+    transform:
+        translate(
+            -50%,
+            20px
+        );
+
+    background:
+        #10233f;
+
+    color:
+        white;
+
+    padding:
+        11px 16px;
+
+    border-radius:
+        9px;
+
+    font-size:
+        10px;
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+
+    transition:
+        .25s;
+
+    z-index:
+        500;
+
+    white-space:
+        nowrap;
+}
+
+
+.toast.show {
+
+    opacity:
+        1;
+
+    transform:
+        translate(
+            -50%,
+            0
+        );
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (min-width: 700px) {
+
+    body {
+
+        padding:
+            25px 0;
+    }
+
+
+    .page {
+
+        max-width:
+            650px;
+
+        margin:
+            auto;
+
+        background:
+            var(--background);
+
+        min-height:
+            calc(100vh - 50px);
+
+        border-radius:
+            25px;
+
+        overflow:
+            hidden;
+
+        box-shadow:
+            0 20px 70px
+            rgba(
+                16,
+                35,
+                63,
+                .12
+            );
+    }
+
+
+    .bottom-navigation {
+
+        max-width:
+            650px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .content {
+
+        padding:
+            17px;
+
+        padding-bottom:
+            95px;
+    }
+
+
+    .auth-container {
+
+        padding:
+            18px;
+    }
+
+
+    .auth-card {
+
+        padding:
+            20px;
+    }
+
+
+    .balance-value {
+
+        font-size:
+            25px;
+    }
+
+}
